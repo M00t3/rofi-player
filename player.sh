@@ -26,7 +26,7 @@ fi
 
 # play online videos links
 if [[ ! "$link" ]]; then
-	$terminal -e youtube-viewer -n --no-video-info --player=mpv "${selected_playlist}"
+	$terminal_cmd youtube-viewer -n --no-video-info --player=mpv "${selected_playlist}"
 	exit 0
 fi
 
@@ -34,7 +34,7 @@ fi
 if [[ "$is_url_link" == 'y' ]]; then
 	if [[ "$link" ]]; then
 		echo "$link"
-		$terminal -e youtube-viewer -n --no-video-info --player=mpv "$link"
+		$terminal_cmd youtube-viewer -n --no-video-info --player=mpv "$link"
 		exit 0
 	else
 		exit 2
