@@ -10,7 +10,7 @@ top song Joep Beving,https://www.youtube.com/playlist?list=OLAK5uy_k4fHIh4k2ul9N
 Internal Flight variation,https://www.youtube.com/watch?v=YUuSdrCojPE,y
 
 # Local Music
-white noise,$HOME/Downloads/Music/white_noise_focus,n
+white noise,white_noise_focus,n
 
 # Radios (It Have Own Script)
 radios,$HOME/.scripts/radio_music,n

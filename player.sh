@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 SCRIPT_PATH=$(readlink -f "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
 cd "$SCRIPT_DIR" || exit 2
@@ -45,11 +46,14 @@ elif [[ $selected_playlist == "radios" ]]; then
 	bash -c "$script_path"
 else
 	# find music file in selected directory
-	files=$(find "$link" -maxdepth 1 -type f -regex '.*mp3\|.*opus')
-	echo "this is path"
+	files=$(find "$files_dir/$link" -maxdepth 1 -type f -regex '.*mp3\|.*opus')
+	if [[ ! $files ]]; then
+		echo "can not find files"
+		exit
+	fi
 	echo -e "files : \n$files"
-	echo "$files" >/tmp/mpv_playlist.txt
+	echo -e "$files" >/tmp/mpv_playlist.txt
 
 	# play local file in infinite loop
-	$terminal -e bash -c "while [[ 1 ]] ;  do  clear;  mpvm --playlist=/tmp/mpv_playlist.txt ;done"
+	$terminal_cmd bash -c "while [[ 1 ]] ;  do  clear;  mpvm --playlist=/tmp/mpv_playlist.txt ;done"
 fi
