@@ -110,10 +110,13 @@ show_help() {
 
     -h, --help
         help
+
+    -s, --show-config
+        show config with editor
 EOF
 }
 
-options=$(getopt -o hadp --long add,delete,play -- "$@" 2>/dev/null)
+options=$(getopt -o hadps --long add,delete,play,show-config -- "$@" 2>/dev/null)
 [ $? -eq 0 ] || {
 	echo "Incorrect options provided"
 	exit 1
@@ -129,6 +132,9 @@ while true; do
 		;;
 	-h | --help)
 		show_help
+		;;
+	-s | --show-config)
+		$read_config_editor ./config.conf
 		;;
 	--)
 		shift
