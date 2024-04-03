@@ -116,6 +116,10 @@ show_help() {
 EOF
 }
 
+if [[ ! $1 ]]; then
+	play_item
+fi
+
 options=$(getopt -o hadps --long add,delete,play,show-config -- "$@" 2>/dev/null)
 [ $? -eq 0 ] || {
 	echo "Incorrect options provided"
